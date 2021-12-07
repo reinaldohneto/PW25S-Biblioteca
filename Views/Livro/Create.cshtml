@@ -1,0 +1,47 @@
+﻿@model Web.Models.LivroDTO
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar livro</h1>
+
+<h4>Livros</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ano" class="control-label">Data de Lançamento</label>
+                <input asp-for="Ano" class="form-control" />
+                <span asp-validation-for="Ano" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeAutor" class="control-label">Nome do autor</label>
+                <select asp-for="NomeAutor" class ="form-control" asp-items="ViewBag.Nome"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label">Data de Cadastro</label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

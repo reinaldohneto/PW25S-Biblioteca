@@ -1,0 +1,42 @@
+﻿@model Web.Models.ReservaDTO
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+<h4>Reserva</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeLocador" class="control-label">Nome do locador</label>
+                <input asp-for="NomeLocador" class="form-control" />
+                <span asp-validation-for="NomeLocador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeLivro" class="control-label">Nome do livro</label>
+                <select asp-for="NomeLivro" class ="form-control" asp-items="ViewBag.Nome"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label">Data de cadastro</label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
